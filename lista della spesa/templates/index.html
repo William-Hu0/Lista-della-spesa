@@ -7,6 +7,17 @@
     <body>
         <h1>Per ora funziona tutto!</h1>
         {{paperino}}
+        {% if lista %}
+            <ul>
+                {% for elemento in lista %}
+                    <li>
+                        {{ elemento }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+        <p>La lista è vuota.</p>
+        {% endif %}
     </body>
 </html>
 
