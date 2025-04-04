@@ -5,19 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Per ora funziona tutto!</h1>
+        <style>
+            body {background-color: rgb(17, 85, 17);}
+            body {color: aliceblue;}
+            button {background-color: lightgreen; }
+        </style>
+        <h1>Lista della spesa</h1>
         {{paperino}}
         {% if lista %}
             <ul>
                 {% for elemento in lista %}
                     <li>
                         {{ elemento }}
+                        <form action="/rimuovi/{{ loop.index0 }}" method="post" style="display:inline;">
+                            <button type="submit">Rimuovi</button>
+                        </form>
                     </li>
                 {% endfor %}
             </ul>
         {% else %}
-        <p>La lista è vuota.</p>
+            <p>La lista è vuota.</p>
         {% endif %}
+        <form action="/aggiungi" method="post">
+            <input type="text" name="elemento" placeholder="Aggiungi un elemento" required>
+            <button type="submit">Aggiungi</button>
+        </form>
+        <form action="/svuota" method="post">
+            <button type="submit">svuota</button>
+        </form>
     </body>
 </html>
 
